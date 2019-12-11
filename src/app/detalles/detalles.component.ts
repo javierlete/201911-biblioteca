@@ -13,7 +13,9 @@ export class DetallesComponent implements OnInit {
   ngOnInit() {
     if (this.route.snapshot.paramMap.has('id')) {
       const id: number = +this.route.snapshot.paramMap.get('id');
-      console.log(id);
+      console.log('Editar', id);
+    } else {
+      console.log('Añadir');
     }
   }
 
