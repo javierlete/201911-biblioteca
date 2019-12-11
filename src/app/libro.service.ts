@@ -21,4 +21,8 @@ export class LibroService {
   getLibro(id: number): Observable<Libro> {
     return this.http.get<Libro>(this.url + id);
   }
+
+  deleteLibro(id: number): Observable<any> {
+    return this.http.delete<any>(this.url + id);
+  }
 }

@@ -14,7 +14,17 @@ export class ListadoComponent implements OnInit {
   constructor(private libroService: LibroService) { }
 
   ngOnInit() {
+    this.cargarLibros();
+  }
+
+  private cargarLibros() {
     this.libroService.getLibros().subscribe(libros => this.libros = libros);
+  }
+
+  onBorrar(id: number) {
+    if (confirm(`¿Estás seguro de que quieres borrar el libro cuyo id es ${id}?`)) {
+      this.libroService.deleteLibro(id).subscribe(_ => this.cargarLibros());
+    }
   }
 
 }
