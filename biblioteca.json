@@ -1,0 +1,6 @@
+{
+    "libros": [
+        { "id": 1, "nombre": "Java", "descripcion": "El mejor para los de Java..." },
+        { "id": 2, "nombre": ".NET", "descripcion": "El mejor también..." }
+    ]
+}
