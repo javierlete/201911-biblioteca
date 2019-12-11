@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { ListadoComponent } from './listado/listado.component';
 import { DetallesComponent } from './detalles/detalles.component';
 
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,7 +15,8 @@ import { DetallesComponent } from './detalles/detalles.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

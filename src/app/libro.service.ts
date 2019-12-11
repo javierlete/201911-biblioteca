@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Libro } from './libro';
 import { Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LibroService {
 
-  private libros: Libro[] = [
-    { id: 1, nombre: 'Java', descripcion: 'El mejor para los de Java...' },
-    { id: 2, nombre: '.NET', descripcion: 'El mejor también...' }
-  ];
+  private libros: Libro[];
 
-  constructor() { }
+  private url = 'http://localhost:3000/libros/';
+
+  constructor(private http: HttpClient) { }
 
   getLibros(): Observable<Libro[]> {
-    return of(this.libros);
+    return this.http.get<Libro[]>(this.url);
   }
 }
