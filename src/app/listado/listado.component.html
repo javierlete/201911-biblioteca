@@ -14,7 +14,7 @@
             <td>{{libro.descripcion}}</td>
             <td>
                 <a routerLink="/detalles/{{libro.id}}" class="btn btn-primary">Editar</a>
-                <a (click)="onBorrar(libro.id)" class="btn btn-danger">Borrar</a>
+                <a href="#" (click)="$event.preventDefault(); onBorrar(libro.id);" class="btn btn-danger">Borrar</a>
             </td>
         </tr>
     </tbody>
