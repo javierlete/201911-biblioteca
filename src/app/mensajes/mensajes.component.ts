@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Mensaje } from '../mensaje';
+import { MensajeService } from '../mensaje.service';
 
 @Component({
   selector: 'app-mensajes',
@@ -8,11 +9,16 @@ import { Mensaje } from '../mensaje';
 })
 export class MensajesComponent implements OnInit {
 
-  mensaje: Mensaje = { texto: 'Prueba', tipo: 'info' };
+  mensajes: Mensaje[] = [];
 
-  constructor() { }
+  constructor(private mensajeService: MensajeService) { }
 
   ngOnInit() {
+    this.mensajes = this.mensajeService.obtener();
   }
 
+  onCerrar(mensaje: Mensaje) {
+    this.mensajeService.borrar(mensaje);
+    this.mensajes = this.mensajeService.obtener();
+  }
 }
