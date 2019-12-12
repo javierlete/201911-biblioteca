@@ -8,11 +8,13 @@ import { DetallesComponent } from './detalles/detalles.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { MensajesComponent } from './mensajes/mensajes.component';
 @NgModule({
   declarations: [
     AppComponent,
     ListadoComponent,
-    DetallesComponent
+    DetallesComponent,
+    MensajesComponent
   ],
   imports: [
     BrowserModule,
