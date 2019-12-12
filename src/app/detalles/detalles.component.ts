@@ -35,15 +35,21 @@ export class DetallesComponent implements OnInit {
   onAceptar() {
     if (this.actualizar) {
       this.libroService.updateLibro(this.libro).subscribe(
-        libro => console.log(libro)
+        libro => {
+          console.log(libro);
+          this.location.back();
+        }
       );
     } else {
       this.libroService.insertLibro(this.libro).subscribe(
-        libro => console.log(libro)
+        libro => {
+          console.log(libro);
+          this.location.back();
+        }
       );
     }
 
-    this.location.back();
+    
   }
 
 }

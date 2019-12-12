@@ -24,12 +24,12 @@ export class LibroService {
 
   insertLibro(libro: Libro): Observable<Libro> {
     console.log('AÑADIR');
-    return of(libro);
+    return this.http.post<Libro>(this.url, libro);
   }
 
   updateLibro(libro: Libro): Observable<Libro> {
     console.log('ACTUALIZAR');
-    return of(libro);
+    return this.http.put<Libro>(this.url + libro.id, libro);
   }
 
   deleteLibro(id: number): Observable<any> {

@@ -1,6 +1,24 @@
 {
-    "libros": [
-        { "id": 1, "nombre": "Java", "descripcion": "El mejor para los de Java..." },
-        { "id": 2, "nombre": ".NET", "descripcion": "El mejor también..." }
-    ]
+  "libros": [
+    {
+      "id": 1,
+      "nombre": "Java",
+      "descripcion": "El mejor para los de Java..."
+    },
+    {
+      "id": 2,
+      "nombre": ".NET",
+      "descripcion": "El mejor también..."
+    },
+    {
+      "id": 3,
+      "nombre": "SuperPrueba",
+      "descripcion": "Yepa"
+    },
+    {
+      "id": 4,
+      "nombre": "Otro nuevo, aunque un poco viejo",
+      "descripcion": "Nuevísimo, bueno, ya no tanto"
+    }
+  ]
 }
