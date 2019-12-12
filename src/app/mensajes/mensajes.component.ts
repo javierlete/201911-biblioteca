@@ -15,6 +15,7 @@ export class MensajesComponent implements OnInit {
 
   ngOnInit() {
     this.mensajes = this.mensajeService.obtener();
+    console.log('Mensajes cargados');
   }
 
   onCerrar(mensaje: Mensaje) {
