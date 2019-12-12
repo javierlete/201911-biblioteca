@@ -9,10 +9,7 @@ export class MensajeService {
   private ultimoId = 0;
   private mensajes: Mensaje[] = [];
 
-  constructor() {
-    this.enviar({ texto: 'Correcto', tipo: 'success' });
-    this.enviar({ texto: 'Mal', tipo: 'danger' });
-   }
+  constructor() {}
 
   enviar(mensaje: Mensaje) {
     mensaje.id = ++this.ultimoId;

@@ -56,8 +56,8 @@ export class LibroService {
 
   deleteLibro(id: number): Observable<any> {
     return this.http.delete<any>(this.url + id).pipe(
-      tap(l => this.mensajeService.enviar(
-          { texto: 'Libro borrado: ' + l.id, tipo: 'success' }
+      tap(_ => this.mensajeService.enviar(
+          { texto: 'Libro borrado: ' + id, tipo: 'success' }
         )
       )
     );
