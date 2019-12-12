@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Libro } from './libro';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { tap, catchError } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { MensajeService } from './mensaje.service';
 
@@ -18,9 +18,18 @@ export class LibroService {
 
   getLibros(): Observable<Libro[]> {
     return this.http.get<Libro[]>(this.url).pipe(
-      tap(l => this.mensajeService.enviar(
-          { texto: 'Recogida lista de libros', tipo: 'success' }
-        )
+      tap(libros => this.mensajeService.enviar(
+        { texto: `Recogidos ${libros.length} libros`, tipo: 'success' }
+      )
+      ),
+      catchError((err: any, caught: Observable<Libro[]>) => {
+        console.error(err, caught);
+
+        this.mensajeService.enviar(
+          { texto: 'Ha habido un error de conexión', tipo: 'danger' }
+        );
+        return of([]);
+      }
       )
     );
   }
@@ -28,8 +37,8 @@ export class LibroService {
   getLibro(id: number): Observable<Libro> {
     return this.http.get<Libro>(this.url + id).pipe(
       tap(l => this.mensajeService.enviar(
-          { texto: 'Obtenido libro ' + l.id, tipo: 'success' }
-        )
+        { texto: 'Obtenido libro ' + l.id, tipo: 'success' }
+      )
       )
     );
   }
@@ -38,8 +47,8 @@ export class LibroService {
     console.log('AÑADIR');
     return this.http.post<Libro>(this.url, libro).pipe(
       tap(l => this.mensajeService.enviar(
-          { texto: 'Libro añadido: ' + l.id, tipo: 'success' }
-        )
+        { texto: 'Libro añadido: ' + l.id, tipo: 'success' }
+      )
       )
     );
   }
@@ -48,8 +57,8 @@ export class LibroService {
     console.log('ACTUALIZAR');
     return this.http.put<Libro>(this.url + libro.id, libro).pipe(
       tap(l => this.mensajeService.enviar(
-          { texto: 'Libro modificado: ' + l.id, tipo: 'success' }
-        )
+        { texto: 'Libro modificado: ' + l.id, tipo: 'success' }
+      )
       )
     );
   }
@@ -57,8 +66,8 @@ export class LibroService {
   deleteLibro(id: number): Observable<any> {
     return this.http.delete<any>(this.url + id).pipe(
       tap(_ => this.mensajeService.enviar(
-          { texto: 'Libro borrado: ' + id, tipo: 'success' }
-        )
+        { texto: 'Libro borrado: ' + id, tipo: 'success' }
+      )
       )
     );
   }
