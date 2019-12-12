@@ -34,9 +34,13 @@ export class DetallesComponent implements OnInit {
 
   onAceptar() {
     if (this.actualizar) {
-      console.log('ACTUALIZAR', this.libro);
+      this.libroService.updateLibro(this.libro).subscribe(
+        libro => console.log(libro)
+      );
     } else {
-      console.log('AÑADIR', this.libro);
+      this.libroService.insertLibro(this.libro).subscribe(
+        libro => console.log(libro)
+      );
     }
 
     this.location.back();
